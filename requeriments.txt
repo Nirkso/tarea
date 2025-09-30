@@ -1,2 +1,2 @@
-apache-beam[gcp]==2.53.0
+apache-beam[gcp]==2.50.0
 pandas==2.2.0
