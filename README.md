@@ -4,8 +4,7 @@
 * Estandarice los identificadores de carrera (RaceID).
 * Filtre los datos no deseados (DeviceType: Other).
 * Enriquezca los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
-
-Genere un único archivo de salida limpio en formato JSON Lines (.jsonl).
+* Genera un archivo de salida limpio en formato JSON Lines.
 
 
 🚁 ¿Qué se necesita para ejecutar?
