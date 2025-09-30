@@ -28,18 +28,24 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 
 🚁 ¿Qué debo hacer?
-1) Instalar las dependencias:
+1) Instalar herramientas del sistema Linux: Colab, Ubuntu, Debian, etc.
+  - En el caso de colab correr estos 3  códigos:
+!sudo apt-get update
+!sudo apt-get install build-essential python3-dev -y
+!pip install --upgrade pip setuptools wheel 
+
+2) Instalar las dependencias:
   * Instala las dependencias listadas en requirements.txt
   - En el caso de colab correr el siguiente código: pip install -r requirements.txt
 
-2) Crear las carpetas para los archivos JSON y CSV y para el achivo con el resultado final JSONL.
+3) Crear las carpetas para los archivos JSON y CSV y para el achivo con el resultado final JSONL.
   - En el caso de colab correr el siguiente código: correr los códigos:
   !mkdir data
   !mkdir resultado
 
-3) Poner los arhivos en la carpeta data/.
+4) Poner los arhivos en la carpeta data/.
 
-4) Ejecutar la pipeline
+5) Ejecutar la pipeline
   - En el caso de colab correr el siguiente código: python pipeline.py
 
 🚁 ¿Qué debo obtengo?
