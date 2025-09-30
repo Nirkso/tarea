@@ -8,15 +8,20 @@
 
 
 🚁 ¿Qué se necesita para ejecutar?
+
 Para que esto funcione se debe dejar los archivos de la siguiente manera en la carpeta data/.
 
-.
+
 ├── pipeline.py
+
 ├── requirements.txt
+
 ├── README.md
+
 ├── data/ 
 │   ├── *.json 
 │   └── country_data.csv
+
 └── resultado/
 
 
