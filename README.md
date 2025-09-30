@@ -13,12 +13,16 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 
 ├── pipeline.py
-├── requirements.txt
-├── README.md
-├── data/ 
-│   ├── *.json 
 
-│   └── country_data.csv
+├── requirements.txt
+
+├── README.md
+
+├── data/ 
+│   ├── *.json # Los tres archivos JSON. cup25_fan_engagement-000-of-001, league04_fan_engagement-000-of-001, race11_fan_engagement-000-of-001.
+
+│   └── country_data.csv  # (El archivo CSV).
+
 └── resultado/
 
 
