@@ -13,15 +13,12 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 
 ├── pipeline.py
-
 ├── requirements.txt
-
 ├── README.md
-
 ├── data/ 
 │   ├── *.json 
-│   └── country_data.csv
 
+│   └── country_data.csv
 └── resultado/
 
 
