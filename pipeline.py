@@ -113,7 +113,7 @@ def ejecutar():
     parser = argparse.ArgumentParser(description="Pipeline ETL para datos de HRL.")
     # Las rutas apuntan directamente a los archivos en la carpeta de ejecución
     parser.add_argument('--ruta_json_entrada', dest='ruta_json_entrada', default=f'{RUTA_BASE}*.json')
-    parser.add_argument('--ruta_csv_entrada', dest='ruta_csv_entrada', default=f'{RUTA_BASE}country_data.csv')
+    parser.add_argument('--ruta_csv_entrada', dest='ruta_csv_entrada', default=f'{RUTA_BASE}country_data_v2.csv')
     parser.add_argument('--ruta_salida', dest='ruta_salida', default='./resultado/datos_enriquecidos_finales')
 
     conocidos_args, args_pipeline = parser.parse_known_args()
@@ -153,4 +153,5 @@ def ejecutar():
     print("Pipeline finalizado con éxito. Resultado guardado en la carpeta /resultado.")
 
 if __name__ == '__main__':
+
     ejecutar()
