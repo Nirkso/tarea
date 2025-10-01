@@ -28,17 +28,23 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 
 🚁 ¿Qué debo hacer?
-1) Instalar herramientas del sistema Linux: Colab, Ubuntu, Debian, etc.
-  - En el caso de colab correr estos 3  códigos:
-!sudo apt-get update
-!sudo apt-get install build-essential python3-dev -y
-!pip install --upgrade pip setuptools wheel 
+1) Generar un nuevo cuaderno en google colab
+2) Instalar herramientas del sistema Linux: Colab, Ubuntu, Debian, etc.
+  - Correr estos 3  códigos:
+!sudo apt-get install python3.10 python3.10-dev
+!sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+!sudo apt-get install python3.10-distutils
 
-2) Instalar las dependencias:
+3) Copiar los archivos al espacio de trabajo de colab desde el repositorio github
+  - Correr este código:
+!git clone https://github.com/Nirkso/tarea.git
+    
+4) Instalar las dependencias:
   * Instala las dependencias listadas en requirements.txt
-  - En el caso de colab correr el siguiente código: pip install -r requirements.txt
+  - Correr el siguiente código:
+!pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
 
-3) Crear las carpetas para los archivos JSON y CSV y para el achivo con el resultado final JSONL.
+5) Crear las carpetas para los archivos JSON y CSV y para el achivo con el resultado final JSONL.
   - En el caso de colab correr el siguiente código: correr los códigos:
   !mkdir data
   !mkdir resultado
