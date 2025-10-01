@@ -1,11 +1,13 @@
+*********************************************************************************************************************************
 🚁 Pipeline desarrollado en Python con Apache Beam para procesar y enriquecer la Liga de Carreras de Helicópteros.
+*********************************************************************************************************************************
 
 🚁 ¿Qué hace?
   * Estandarice los identificadores de carrera (RaceID).
   * Filtre los datos no deseados (DeviceType: Other).
   * Enriquezca los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
   * Genera un archivo de salida limpio en formato JSON Lines.
-
+*********************************************************************************************************************************
 
 🚁 ¿Qué se necesita para ejecutar?
 
@@ -24,8 +26,7 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 │   └── country_data.csv  # (El archivo CSV).
 
 └── resultado/
-
-
+*********************************************************************************************************************************
 
 🚁 ¿Qué debo hacer?
 1) Generar un nuevo cuaderno en google colab
@@ -43,16 +44,14 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
   * Instala las dependencias listadas en requirements.txt
   - Correr el siguiente código:
 !pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
-
-5) Crear las carpetas para los archivos JSON y CSV y para el achivo con el resultado final JSONL.
-  - En el caso de colab correr el siguiente código: correr los códigos:
-  !mkdir data
-  !mkdir resultado
-
-4) Poner los arhivos en la carpeta data/.
+4.1) Reiniciar la sesión
+4.2) Volver a correr el siguiente código:
+!pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
 
 5) Ejecutar la pipeline
-  - En el caso de colab correr el siguiente código: python pipeline.py
+  -Correr el siguiente código:
+   !python tarea/pipeline.py
+*********************************************************************************************************************************
 
 🚁 ¿Qué debo obtengo?
   * en la carpeta de salida queda guardado el archivo JSONL final.
