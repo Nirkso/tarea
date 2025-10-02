@@ -113,7 +113,7 @@ def ejecutar():
     parser.add_argument('--ruta_csv_entrada', dest='ruta_csv_entrada', default=f'{RUTA_BASE}country_data_v2.csv')
     
     # Configuración del archivo con el resultado
-    parser.add_argument('--ruta_salida', dest='ruta_salida', default='./tarea/resultado/resultado_final')
+    parser.add_argument('--ruta_salida', dest='ruta_salida', default=f'{RUTA_BASE}resultado/resultado_final')
 
     conocidos_args, args_pipeline = parser.parse_known_args()
 
@@ -153,4 +153,5 @@ def ejecutar():
 
 if __name__ == '__main__':
     ejecutar()
+
 
