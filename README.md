@@ -3,15 +3,15 @@
 *********************************************************************************************************************************
 
 🚁 ¿Qué hace?
-  * Estandarice los identificadores de carrera (RaceID).
-  * Filtre los datos no deseados (DeviceType: Other).
-  * Enriquezca los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
+  * Estandarizar los identificadores de carrera (RaceID). Solo letras y números, sin espacios ni otros caracteres.
+  * Filtrar los datos no deseados (DeviceType: Other).
+  * Enriquece los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
   * Genera un archivo de salida limpio en formato JSON Lines.
 *********************************************************************************************************************************
 
 🚁 ¿Qué se necesita para ejecutar?
 
-Para que esto funcione se debe dejar los archivos de la siguiente manera en la carpeta data/.
+Para que esto funcione se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/.
 
 
 ├── pipeline.py
@@ -20,10 +20,9 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 ├── README.md
 
-├── data/ 
-│   ├── *.json # Los tres archivos JSON. cup25_fan_engagement-000-of-001, league04_fan_engagement-000-of-001, race11_fan_engagement-000-of-001.
+├── *.json # Los tres archivos JSON. cup25_fan_engagement-000-of-001, league04_fan_engagement-000-of-001, race11_fan_engagement-000-of-001.
 
-│   └── country_data.csv  # (El archivo CSV).
+├── country_data.csv  # (El archivo CSV).
 
 └── resultado/
 *********************************************************************************************************************************
@@ -44,7 +43,9 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
   * Instala las dependencias listadas en requirements.txt
   - Correr el siguiente código:
 !pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
+
 4.1) Reiniciar la sesión
+
 4.2) Volver a correr el siguiente código:
 !pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
 
@@ -55,4 +56,4 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 🚁 ¿Qué debo obtengo?
   * en la carpeta de salida queda guardado el archivo JSONL final.
-    ./resultado/resultado_pipeline.jsonl# tarea
+    ./resultado/resultado_final.jsonl
