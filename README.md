@@ -44,9 +44,9 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
   - Correr el siguiente código:
 !pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
 
-4.1) Reiniciar la sesión
+   4.1 Reiniciar la sesión
 
-4.2) Volver a correr el siguiente código:
+   4.2 Volver a correr el siguiente código:
 !pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
 
 5) Ejecutar la pipeline
