@@ -1,13 +1,13 @@
-🚁 Pipeline desarrollado en Python con Apache Beam para procesar y enriquecer la Liga de Carreras de Helicópteros.
+🚁 Pipeline desarrollado en Python con Apache Beam para procesar 3 archivos json y enriquecer la Liga de Carreras de Helicópteros con un archivo csv.
 🚁 ¿Qué hace?
-  * Estandarizar los identificadores de carrera (RaceID). Solo letras y números, sin espacios ni otros caracteres.
-  * Filtrar los datos no deseados (DeviceType: Other).
+  * Estandarizar los identificadores de carrera (campo RaceID). Solo letras y números, sin espacios ni otros caracteres.
+  * Filtrar los datos no deseados (campo DeviceType != Other).
   * Enriquece los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
   * Genera un archivo de salida limpio en formato JSON Lines.
 *********************************************************************************************************************************
 🚁 ¿Qué se necesita para ejecutar?
 Abrir google colab.
-Se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/.
+Se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/ (paso 3 para copiar datos desde github).
 
 ├── pipeline.py
 
