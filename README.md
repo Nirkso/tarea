@@ -1,18 +1,13 @@
-*********************************************************************************************************************************
 🚁 Pipeline desarrollado en Python con Apache Beam para procesar y enriquecer la Liga de Carreras de Helicópteros.
-*********************************************************************************************************************************
-
 🚁 ¿Qué hace?
   * Estandarizar los identificadores de carrera (RaceID). Solo letras y números, sin espacios ni otros caracteres.
   * Filtrar los datos no deseados (DeviceType: Other).
   * Enriquece los datos de los fans (JSON) con información geográfica detallada de países (CSV) mediante un Side Input.
   * Genera un archivo de salida limpio en formato JSON Lines.
 *********************************************************************************************************************************
-
 🚁 ¿Qué se necesita para ejecutar?
-
-Para que esto funcione se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/.
-
+Abrir google colab.
+Se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/.
 
 ├── pipeline.py
 
@@ -26,7 +21,6 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
 
 └── resultado/
 *********************************************************************************************************************************
-
 🚁 ¿Qué debo hacer?
 1) Generar un nuevo cuaderno en google colab
 2) Instalar herramientas del sistema Linux: Colab, Ubuntu, Debian, etc.
@@ -53,7 +47,6 @@ Para que esto funcione se debe dejar los archivos de la siguiente manera en la c
   -Correr el siguiente código:
    !python tarea/pipeline.py
 *********************************************************************************************************************************
-
 🚁 ¿Qué debo obtengo?
-  * en la carpeta de salida queda guardado el archivo JSONL final.
+  * en la carpeta de salida queda guardado el archivo JSONL final con los datos limpios, filtrados y enriquecidos.
     ./resultado/resultado_final.jsonl
