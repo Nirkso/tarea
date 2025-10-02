@@ -7,9 +7,8 @@ import re        # Para usar expresiones regulares (limpieza de texto)
 import csv       # Para leer y procesar el archivo CSV
 import io        # Para ayudar a leer el CSV línea por línea
 
-# ==============================================================================
-# TRANSFORMACIÓN (ParDo)
-# ==============================================================================
+# TRANSFORMACIÓN CON ParDo
+
 
 class NormalizarIDCarrera(beam.DoFn):
     """
@@ -22,7 +21,7 @@ class NormalizarIDCarrera(beam.DoFn):
             # 1. Convertir a minúsculas.
             id_carrera = registro['RaceID'].lower()
 
-            # 2. Limpieza estricta: Elimina CUALQUIER carácter que NO sea letra (a-z) o número (0-9).
+            # 2. Eliminación de caracteres que no sea letra (a-z) o número (0-9).
             normalized_id = re.sub(r'[^a-z0-9]+', '', id_carrera)
 
             registro['RaceID'] = normalized_id
@@ -47,16 +46,15 @@ class EnriquecerConDatosPais(beam.DoFn):
     Realiza el JOIN (unión) usando el Side Input del CSV.
     """
     def process(self, registro, datos_pais):
-        # 'datos_pais' es el diccionario completo que Beam resuelve del CSV.
 
-        # 1. Obtener la clave de unión y la eliminamos del registro original.
+        # 1. Obtener la clave de unión y la eliminación del registro original.
         clave_pais = registro.pop('ViewerLocationCountry', None)
 
         # 2. JOIN/Búsqueda (Lookup)
         info_ubicacion = datos_pais.get(clave_pais, None)
 
         if info_ubicacion:
-            # Si hay match, construimos la estructura anidada 'LocationData'
+            # Si hay match, se construye la estructura anidada 'LocationData'
             registro['LocationData'] = {
                 'country': info_ubicacion['Country'],
                 'capital': info_ubicacion['Capital'],
@@ -65,14 +63,13 @@ class EnriquecerConDatosPais(beam.DoFn):
                 'currency': info_ubicacion['Currency']
             }
         else:
-            # Si no hay match, la dejamos vacía.
+            # Si no hay match, se deja vacía.
             registro['LocationData'] = {}
 
         yield registro
 
-# ==============================================================================
+
 # PREPARACIÓN DEL CSV (SIDE INPUT)
-# ==============================================================================
 
 def leer_y_preparar_csv(p, ruta_csv):
     """
@@ -90,43 +87,45 @@ def leer_y_preparar_csv(p, ruta_csv):
             'Urban Population': row[7], 'Continent': row[8], 'Main Official Language': row[9],
             'Currency': row[10]
         })
-        # Creamos pares (Clave_Pais, Datos_Requeridos)
+        # Creación pares (Clave_Pais, Datos_Requeridos)
         | 'A Par Clave-Valor' >> beam.Map(lambda row: (
             row['Country'],
             {k: row[k] for k in ['Country', 'Capital', 'Continent', 'Main Official Language', 'Currency']}
         ))
     )
 
-    # Creamos y retornamos la PCollectionView (vista de diccionario)
+    # Creación de PCollectionView (vista de diccionario)
     return beam.pvalue.AsDict(pcoll_clave_valor)
 
-# ==============================================================================
+
 # FUNCIÓN PRINCIPAL DE EJECUCIÓN (MAIN)
-# ==============================================================================
 
 def ejecutar():
     
-    # ⚠️ AJUSTE CLAVE: Usamos la carpeta actual './' (tarea/) para buscar los archivos
-    RUTA_BASE = './'
+    # Lectura de los archivos
+    RUTA_BASE = '/content/tarea/'
 
     # Configuración de Paths
     parser = argparse.ArgumentParser(description="Pipeline ETL para datos de HRL.")
     # Las rutas apuntan directamente a los archivos en la carpeta de ejecución
     parser.add_argument('--ruta_json_entrada', dest='ruta_json_entrada', default=f'{RUTA_BASE}*.json')
+    
     parser.add_argument('--ruta_csv_entrada', dest='ruta_csv_entrada', default=f'{RUTA_BASE}country_data_v2.csv')
-    parser.add_argument('--ruta_salida', dest='ruta_salida', default='./resultado/datos_enriquecidos_finales')
+    
+    # Configuración del archivo con el resultado
+    parser.add_argument('--ruta_salida', dest='ruta_salida', default='./tarea/resultado/resultado_final')
 
     conocidos_args, args_pipeline = parser.parse_known_args()
 
-    # Opciones de Ejecución: Usamos DirectRunner
+    # Usamos DirectRunner
     opciones = PipelineOptions(args_pipeline)
     opciones.view_as(StandardOptions).runner = 'DirectRunner'
 
     # Inicio del Pipeline de Apache Beam
-    print("🚀 Iniciando Pipeline Apache Beam...")
+    print("Iniciando Pipeline Apache Beam")
     with beam.Pipeline(options=opciones) as p:
 
-        # 1. Preparar Side Input (CSV)
+        # 1. Preparar side input (CSV)
         vista_datos_pais = leer_y_preparar_csv(p, conocidos_args.ruta_csv_entrada)
 
         # 2. Procesamiento de los JSON (ETL)
@@ -144,14 +143,14 @@ def ejecutar():
 
             # 3. Carga (Load)
             | '5-Escribir a Archivo' >> beam.io.WriteToText(
-                conocidos_args.ruta_salida,
-                file_name_suffix='.jsonl',
+                conocidos_args.ruta_salida,  # Carpeta del arhivo
+                file_name_suffix='.jsonl',  # Formato del arhivo
                 shard_name_template='' # Escribir en un solo archivo
             )
         )
 
-    print("Pipeline finalizado con éxito. Resultado guardado en la carpeta /resultado.")
+    print("Pipeline finalizado con éxito. Resultado guardado en la carpeta /resultado con el nombre resultado_final.jsonl.")
 
 if __name__ == '__main__':
-
     ejecutar()
+
