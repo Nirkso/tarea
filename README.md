@@ -36,12 +36,12 @@ Se debe dejar los archivos de la siguiente manera en la carpeta ./tarea/ (paso 3
 4) Instalar las dependencias:
   * Instala las dependencias listadas en requirements.txt
   - Correr el siguiente código:
-!pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
+!pip install -r tarea/requirements.txt --prefer-binary --no-build-isolation
 
    4.1 Reiniciar la sesión
 
    4.2 Volver a correr el siguiente código:
-!pip install -r tarea/requeriments.txt --prefer-binary --no-build-isolation
+!pip install -r tarea/requirements.txt --prefer-binary --no-build-isolation
 
 5) Ejecutar la pipeline
   -Correr el siguiente código:
